@@ -1,0 +1,29 @@
+spring:
+  kafka:
+    multiple:
+      # Primary data source is not allowed to be empty.
+      primary: ds1
+      consumer:
+        key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+        value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+        auto-offset-reset: latest
+      producer:
+        key-serializer: org.apache.kafka.common.serialization.StringSerializer
+        value-serializer: org.apache.kafka.common.serialization.StringSerializer
+      datasource:
+        ds1:
+          bootstrap-servers: localhost:9092
+          consumer:
+            # Consumer concurrent kafka listener container factory is not allowed to be empty.
+            container-factory: ds1KafkaListenerContainerFactory
+            auto-offset-reset: earliest
+          producer:
+            kafka-template: ds1KafkaTemplate
+        ds2:
+          bootstrap-servers: localhost:9093
+          consumer:
+            container-factory: ds2KafkaListenerContainerFactory
+            auto-offset-reset: earliest
+          producer:
+            # Producer kafka template bean name is not allowed to be empty.
+            kafka-template: ds2KafkaTemplate
