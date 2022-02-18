@@ -1,2 +1,2 @@
 # kafka-spring-boot-starter-demo
-kafka-spring-boot-starter 示例
+kafka-spring-boot-starter demo
